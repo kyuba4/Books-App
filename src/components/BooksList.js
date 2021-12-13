@@ -1,11 +1,17 @@
 import Book from "./Book";
+import useFetch from "../hooks/useFetch";
 
-const BooksList = ({ books }) => {
+const BooksList = () => {
+  const [data, isPending, error] = useFetch("Harry Potter");
+
   return (
     <div className="wrapper">
-      {books.map((book) => {
-        return <Book book={book.volumeInfo} key={book.id} />;
-      })}
+      {data &&
+        data.map((book) => {
+          return <Book book={book.volumeInfo} key={book.id} />;
+        })}
+      {isPending === null && <div>Loading...</div>}
+      {error && <div>{error}</div>}
     </div>
   );
 };
