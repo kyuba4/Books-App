@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (book) => {
+const useFetch = (title) => {
   const API_KEY = "AIzaSyBPf9bAmhP_UOwIGVWwoRHKUHX49b-Q2Xg";
 
   const [data, setData] = useState(null);
@@ -8,20 +8,20 @@ const useFetch = (book) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&key=${API_KEY}`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${API_KEY}`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setData(data);
+        setData(data.items);
         setIsPending(false);
         setError(false);
       })
       .catch((err) => {
         setIsPending(false);
-        setError(err);
+        setError(err.message);
       });
-  }, [book]);
+  }, [title]);
 
   return [data, isPending, error];
 };
