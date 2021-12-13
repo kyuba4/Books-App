@@ -1,5 +1,7 @@
-function App() {
-  return <div>Home Page</div>;
-}
+import Header from "./components/Header";
+
+const App = () => {
+  return <Header />;
+};
 
 export default App;
