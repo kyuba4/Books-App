@@ -1,7 +1,13 @@
 import Header from "./components/Header";
+import BooksList from "./components/BooksList";
 
 const App = () => {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <BooksList />
+    </>
+  );
 };
 
 export default App;
