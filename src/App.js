@@ -1,18 +1,16 @@
 import Header from "./components/Header";
 import BooksList from "./components/BooksList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useFetch from "./hooks/useFetch";
 
 const App = () => {
   const [bookFilter, setBookFilter] = useState(null);
-
-  useEffect(() => {
-    console.log(bookFilter);
-  }, [bookFilter]);
+  const [data, isPending, error] = useFetch(bookFilter);
 
   return (
     <>
       <Header bookFilter={setBookFilter} />
-      <BooksList />
+      <BooksList data={data} isPending={isPending} error={error} />
     </>
   );
 };
