@@ -1,16 +1,24 @@
 import Logo from "../assets/logo.png";
 
-const Header = () => {
+const Header = ({ bookFilter }) => {
+  const preventDefault = (e) => {
+    e.preventDefault();
+  };
+
   const labelMove = (e) => {
     const value = e.target.value.length;
     const label = document.getElementById("form-label");
 
-    if (value > 0) {
-      label.classList.add("moved");
-    }
-    if (value === 0) {
-      label.classList.remove("moved");
-    }
+    value > 0 ? label.classList.add("moved") : label.classList.remove("moved");
+  };
+
+  const onInputChange = (e) => {
+    bookFilter(e.target.value);
+  };
+
+  const handleInput = (e) => {
+    labelMove(e);
+    onInputChange(e);
   };
 
   return (
@@ -19,9 +27,9 @@ const Header = () => {
         <img src={Logo} alt="Logo" />
       </div>
       <div className="search-bar">
-        <form>
+        <form onSubmit={preventDefault}>
           <label id="form-label">Search a book</label>
-          <input type="text" required onChange={labelMove} />
+          <input type="text" onChange={handleInput} />
         </form>
       </div>
     </div>
