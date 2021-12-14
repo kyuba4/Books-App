@@ -8,18 +8,20 @@ const useFetch = (title) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsPending(true);
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${API_KEY}`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setData(data.items);
-        setIsPending(false);
         setError(false);
       })
       .catch((err) => {
-        setIsPending(false);
         setError(err.message);
+      })
+      .finally(() => {
+        setIsPending(false);
       });
   }, [title]);
 

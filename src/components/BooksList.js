@@ -10,7 +10,7 @@ const BooksList = () => {
         data.map((book) => {
           return <Book book={book.volumeInfo} key={book.id} />;
         })}
-      {isPending === null && <div>Loading...</div>}
+      {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
     </div>
   );

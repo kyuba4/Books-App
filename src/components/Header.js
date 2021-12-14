@@ -24,11 +24,6 @@ const Header = () => {
           <input type="text" required onChange={labelMove} />
         </form>
       </div>
-      <div className="powered-by">
-        <a href="https://developers.google.com/books/docs/overview" target="_blank" rel="noreferrer">
-          Powered by Google Books API
-        </a>
-      </div>
     </div>
   );
 };
