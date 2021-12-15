@@ -5,7 +5,7 @@ const Book = ({ book }) => {
   // published date publishedDate
 
   return (
-    <a rel="noreferrer" target="_blank" href={book.infoLink}>
+    <a className="book" rel="noreferrer" target="_blank" href={book.infoLink}>
       <div className="card">
         {/* Thumbnail */}
         {book.imageLinks && (

@@ -1,4 +1,5 @@
 import Logo from "../assets/logo.png";
+import PoweredBy from "../assets/powered_by_google_on_white_hdpi.png";
 
 const Header = ({ bookFilter }) => {
   const preventDefault = (e) => {
@@ -31,6 +32,11 @@ const Header = ({ bookFilter }) => {
           <label id="form-label">Search a book</label>
           <input type="text" onChange={handleInput} />
         </form>
+      </div>
+      <div id="powered-by">
+        <a href="https://www.google.com/googlebooks/about/index.html" rel="noreferrer" target="_blank">
+          <img src={PoweredBy} alt="Powered By Google" />
+        </a>
       </div>
     </div>
   );
