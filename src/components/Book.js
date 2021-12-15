@@ -22,12 +22,18 @@ const Book = ({ book }) => {
         )}
 
         {/* Title/s */}
-        {book.title && <div className="card__desc-line">Title: {title + ", "}</div>}
+        {book.title && (
+          <div className="card__desc-line">
+            {" "}
+            <span className="bold">Title: </span>
+            {title + ", "}
+          </div>
+        )}
 
         {/* Authors */}
         {authors && (
           <div className="card__desc-line">
-            Author/s:{" "}
+            <span className="bold">Author/s: </span>
             {authors.map((author) => {
               return <span key={author}>{author + ", "}</span>;
             })}
@@ -35,13 +41,31 @@ const Book = ({ book }) => {
         )}
 
         {/* Language */}
-        {language && <div className="card__desc-line">Language: {language.toUpperCase()}</div>}
+        {language && (
+          <div className="card__desc-line">
+            {" "}
+            <span className="bold">Language: </span>
+            {language.toUpperCase()}
+          </div>
+        )}
 
         {/* ISBN */}
-        {industryIdentifiers && <div className="card__desc-line">ISBN: {industryIdentifiers[0].identifier}</div>}
+        {industryIdentifiers && (
+          <div className="card__desc-line">
+            {" "}
+            <span className="bold">ISBN: </span>
+            {industryIdentifiers[0].identifier}
+          </div>
+        )}
 
         {/* Published */}
-        {publishedDate && <div className="card__desc-line">Published: {publishedDate}</div>}
+        {publishedDate && (
+          <div className="card__desc-line">
+            {" "}
+            <span className="bold">Published: </span>
+            {publishedDate}
+          </div>
+        )}
       </div>
     </a>
   );

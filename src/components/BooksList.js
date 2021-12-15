@@ -1,7 +1,18 @@
 import Book from "./Book";
 import Loader from "react-loader-spinner";
+import { useEffect } from "react";
 
 const BooksList = ({ data, isTyped, error }) => {
+  useEffect(() => {
+    const element = document.querySelector(".wrapper");
+
+    if (element) {
+      setTimeout(() => {
+        element.className += " enter";
+      }, 0);
+    }
+  }, [data]);
+
   return (
     <>
       {!data && !isTyped && <h1 className="result-heading">Type a book above</h1>}

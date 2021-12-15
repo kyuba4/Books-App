@@ -20,7 +20,15 @@ const useFetch = (title) => {
           setError(err.message);
         });
     } else {
-      setData(null);
+      const element = document.querySelector(".wrapper");
+
+      if (element) {
+        element.className = "wrapper leave";
+      }
+
+      setTimeout(() => {
+        setData(null);
+      }, 300);
     }
   }, [title]);
 
