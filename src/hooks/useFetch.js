@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (title) => {
-  const API_KEY = "AIzaSyBPf9bAmhP_UOwIGVWwoRHKUHX49b-Q2Xg";
+  const API_KEY = YOUR_API_KEY;
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
