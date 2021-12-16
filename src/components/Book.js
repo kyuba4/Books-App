@@ -1,11 +1,19 @@
+import { useEffect, useRef } from "react";
+
 const Book = ({ book }) => {
   const { imageLinks, title, authors, language, industryIdentifiers, publishedDate } = book;
   const NO_IMG = "https://dummyimage.com/200x300&text=No+Image";
+  const bookComponent = useRef();
 
-  // published date publishedDate
+  useEffect(() => {
+    setTimeout(() => {
+      if (!bookComponent) return;
+      bookComponent.current.classList.add("fade");
+    }, 10);
+  }, [bookComponent]);
 
   return (
-    <a className="book" rel="noreferrer" target="_blank" href={book.infoLink}>
+    <a className="book" rel="noreferrer" target="_blank" href={book.infoLink} ref={bookComponent}>
       <div className="card">
         {/* Thumbnail */}
         {book.imageLinks && (

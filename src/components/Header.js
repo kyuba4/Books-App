@@ -2,9 +2,8 @@ import Logo from "../assets/logo.png";
 import PoweredBy from "../assets/powered_by_google_on_white_hdpi.png";
 import { useEffect, useState } from "react";
 
-const Header = ({ bookFilter, setInput }) => {
+const Header = ({ bookFilter, setPending }) => {
   const [inputValue, setInputValue] = useState("");
-  const element = document.querySelector(".wrapper");
 
   const preventDefault = (e) => {
     e.preventDefault();
@@ -23,15 +22,15 @@ const Header = ({ bookFilter, setInput }) => {
   };
 
   useEffect(() => {
-    if (element) {
-      element.classList.add("leave");
-      element.classList.remove("enter");
+    // Set fake pending
+    if (inputValue.length > 0) {
+      setPending(true);
+    } else {
+      setPending(false);
     }
-
-    setInput(inputValue);
     const timeoutID = setTimeout(() => bookFilter(inputValue), 800);
     return () => clearTimeout(timeoutID);
-  }, [inputValue, bookFilter, setInput, element]);
+  }, [inputValue, bookFilter, setPending]);
 
   return (
     <div className="header">

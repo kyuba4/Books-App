@@ -4,7 +4,6 @@ const useFetch = (title) => {
   const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (title) {
@@ -14,21 +13,13 @@ const useFetch = (title) => {
         })
         .then((data) => {
           setData(data.items);
-          setError(false);
-        })
-        .catch((err) => {
-          setError(err.message);
         });
     } else {
-      const element = document.querySelector(".wrapper");
-      if (element) {
-        element.className = "wrapper leave";
-      }
       setData(null);
     }
   }, [title, API_KEY]);
 
-  return [data, error];
+  return [data];
 };
 
 export default useFetch;

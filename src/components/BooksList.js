@@ -1,22 +1,11 @@
 import Book from "./Book";
 import Loader from "react-loader-spinner";
-import { useEffect } from "react";
 
-const BooksList = ({ data, input, error }) => {
-  useEffect(() => {
-    const element = document.querySelector(".wrapper");
-    if (element) {
-      setTimeout(() => {
-        element.classList.remove("leave");
-        element.classList.add("enter");
-      }, 0);
-    }
-  }, [data]);
-
+const BooksList = ({ data, isPending }) => {
   return (
     <>
       {!data && <h1 className="result-heading">Type a book above</h1>}
-      {input && !data && (
+      {data === null && isPending && (
         <div className="loading">
           <Loader type="TailSpin" color="#323232" height={90} width={90} />
         </div>
@@ -31,7 +20,12 @@ const BooksList = ({ data, input, error }) => {
           </div>
         </>
       )}
-      {error && <div>{error}</div>}
+      {data === undefined && (
+        <div className="undefined-book">
+          We don't know this book yet <br />
+          Please try again
+        </div>
+      )}
     </>
   );
 };

@@ -5,13 +5,13 @@ import { useState } from "react";
 
 const App = () => {
   const [bookFilter, setBookFilter] = useState(null);
-  const [data, error] = useFetch(bookFilter);
-  const [input, setInput] = useState("");
+  const [data] = useFetch(bookFilter);
+  const [isPending, setIsPending] = useState(false);
 
   return (
     <>
-      <Header bookFilter={setBookFilter} setInput={setInput} />
-      <BooksList data={data} error={error} input={input} />
+      <Header bookFilter={setBookFilter} setPending={setIsPending} />
+      <BooksList data={data} isPending={isPending} />
     </>
   );
 };
