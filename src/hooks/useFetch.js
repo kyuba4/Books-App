@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (title) => {
-  const API_KEY = "AIzaSyBPf9bAmhP_UOwIGVWwoRHKUHX49b-Q2Xg";
+  const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ const useFetch = (title) => {
       }
       setData(null);
     }
-  }, [title]);
+  }, [title, API_KEY]);
 
   return [data, error];
 };
