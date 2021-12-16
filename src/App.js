@@ -6,12 +6,12 @@ import { useState } from "react";
 const App = () => {
   const [bookFilter, setBookFilter] = useState(null);
   const [data, error] = useFetch(bookFilter);
+  const [input, setInput] = useState("");
 
   return (
     <>
-      <Header bookFilter={setBookFilter} />
-      {/* Is typed means if user typed something into input */}
-      <BooksList data={data} isTyped={bookFilter} error={error} />
+      <Header bookFilter={setBookFilter} setInput={setInput} />
+      <BooksList data={data} error={error} input={input} />
     </>
   );
 };

@@ -21,14 +21,10 @@ const useFetch = (title) => {
         });
     } else {
       const element = document.querySelector(".wrapper");
-
       if (element) {
         element.className = "wrapper leave";
       }
-
-      setTimeout(() => {
-        setData(null);
-      }, 300);
+      setData(null);
     }
   }, [title]);
 

@@ -2,8 +2,9 @@ import Logo from "../assets/logo.png";
 import PoweredBy from "../assets/powered_by_google_on_white_hdpi.png";
 import { useEffect, useState } from "react";
 
-const Header = ({ bookFilter }) => {
+const Header = ({ bookFilter, setInput }) => {
   const [inputValue, setInputValue] = useState("");
+  const element = document.querySelector(".wrapper");
 
   const preventDefault = (e) => {
     e.preventDefault();
@@ -22,9 +23,15 @@ const Header = ({ bookFilter }) => {
   };
 
   useEffect(() => {
+    if (element) {
+      element.classList.add("leave");
+      element.classList.remove("enter");
+    }
+
+    setInput(inputValue);
     const timeoutID = setTimeout(() => bookFilter(inputValue), 800);
     return () => clearTimeout(timeoutID);
-  }, [inputValue, bookFilter]);
+  }, [inputValue, bookFilter, setInput, element]);
 
   return (
     <div className="header">
