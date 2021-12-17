@@ -8,12 +8,12 @@ const Book = ({ book }) => {
   useEffect(() => {
     setTimeout(() => {
       if (!bookComponent) return;
-      bookComponent.current.classList.add("fade");
+      bookComponent.current.classList.remove("fade");
     }, 10);
   }, [bookComponent]);
 
   return (
-    <a className="book" rel="noreferrer" target="_blank" href={book.infoLink} ref={bookComponent}>
+    <a className="book fade" rel="noreferrer" target="_blank" href={book.infoLink} ref={bookComponent}>
       <div className="card">
         {/* Thumbnail */}
         {book.imageLinks && (
