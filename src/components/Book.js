@@ -9,7 +9,7 @@ const Book = ({ book }) => {
     setTimeout(() => {
       if (!bookComponent) return;
       bookComponent.current.classList.remove("fade");
-    }, 10);
+    }, 0);
   }, [bookComponent]);
 
   return (
