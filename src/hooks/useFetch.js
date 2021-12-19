@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (title) => {
+const useFetch = (title, setIsEmpty) => {
   const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
   const [data, setData] = useState(null);
@@ -15,9 +15,12 @@ const useFetch = (title) => {
           setData(data.items);
         });
     } else {
-      setData(null);
+      setIsEmpty(true);
+      setTimeout(() => {
+        setData(null);
+      }, 450);
     }
-  }, [title, API_KEY]);
+  }, [title, setIsEmpty, API_KEY]);
 
   return [data];
 };

@@ -3,17 +3,18 @@ import { useEffect, useRef } from "react";
 const Book = ({ book }) => {
   const { imageLinks, title, authors, language, industryIdentifiers, publishedDate } = book;
   const NO_IMG = "https://dummyimage.com/200x300&text=No+Image";
-  const bookComponent = useRef();
+  const bookRef = useRef();
 
   useEffect(() => {
     setTimeout(() => {
-      if (!bookComponent) return;
-      bookComponent.current.classList.remove("fade");
-    }, 0);
-  }, [bookComponent]);
+      if (!bookRef) return;
+
+      bookRef.current.classList.remove("fade");
+    }, 10);
+  }, [bookRef]);
 
   return (
-    <a className="book fade" rel="noreferrer" target="_blank" href={book.infoLink} ref={bookComponent}>
+    <a className="book fade" rel="noreferrer" target="_blank" href={book.infoLink} ref={bookRef}>
       <div className="card">
         {/* Thumbnail */}
         {book.imageLinks && (
@@ -53,7 +54,7 @@ const Book = ({ book }) => {
           <div className="card__desc-line">
             {" "}
             <span className="bold">Language: </span>
-            {language.toUpperCase()}
+            {language.toUpperCase() + ", "}
           </div>
         )}
 
@@ -62,7 +63,7 @@ const Book = ({ book }) => {
           <div className="card__desc-line">
             {" "}
             <span className="bold">ISBN: </span>
-            {industryIdentifiers[0].identifier}
+            {industryIdentifiers[0].identifier + ", "}
           </div>
         )}
 

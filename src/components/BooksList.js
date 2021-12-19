@@ -1,7 +1,17 @@
 import Book from "./Book";
 import Loader from "react-loader-spinner";
+import { useEffect, useRef } from "react";
 
-const BooksList = ({ data, isPending }) => {
+const BooksList = ({ data, isPending, isEmpty }) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    if (!ref.current) return;
+    if (isEmpty) {
+      ref.current.classList.add("clear");
+    }
+  }, [isEmpty]);
+
   return (
     <>
       {!data && <h1 className="result-heading">Type a book above</h1>}
@@ -13,10 +23,10 @@ const BooksList = ({ data, isPending }) => {
       {data && (
         <>
           <h1 className="result-heading">Results</h1>
-          <div className="wrapper">
-            {data.map((book) => {
-              return <Book book={book.volumeInfo} key={book.id} />;
-            })}
+          <div className="wrapper" ref={ref}>
+            {data.map((book) => (
+              <Book book={book.volumeInfo} key={book.id} />
+            ))}
           </div>
         </>
       )}

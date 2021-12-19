@@ -7,7 +7,7 @@
   border-radius: 5px;
   color: inherit;
   text-decoration: none;
-  transition: 300ms;
+  transition: transform 450ms, opacity 300ms;
 
   &:hover {
     transform: translateY(-3px);
@@ -15,7 +15,7 @@
 
   &.fade {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
 
   .card {
