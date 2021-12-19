@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 const BooksList = ({ data, isPending, isEmpty }) => {
   const ref = useRef();
 
+  // Wrapper leave transition
   useEffect(() => {
     if (!ref.current) return;
     if (isEmpty) {
