@@ -2,12 +2,8 @@ import Logo from "../assets/logo.png";
 import PoweredBy from "../assets/powered_by_google_on_white_hdpi.png";
 import { useEffect, useState } from "react";
 
-const Header = ({ bookFilter, setPending }) => {
+const Header = ({ bookFilter }) => {
   const [inputValue, setInputValue] = useState("");
-
-  const preventDefault = (e) => {
-    e.preventDefault();
-  };
 
   const handleLabelMove = (e) => {
     const length = e.target.value.length;
@@ -22,15 +18,9 @@ const Header = ({ bookFilter, setPending }) => {
   };
 
   useEffect(() => {
-    // Set fake pending
-    if (inputValue.length > 0) {
-      setPending(true);
-    } else {
-      setPending(false);
-    }
     const timeoutID = setTimeout(() => bookFilter(inputValue), 800);
     return () => clearTimeout(timeoutID);
-  }, [inputValue, bookFilter, setPending]);
+  }, [inputValue, bookFilter]);
 
   return (
     <div className="header">
@@ -38,7 +28,7 @@ const Header = ({ bookFilter, setPending }) => {
         <img src={Logo} alt="Logo" />
       </div>
       <div className="search-bar">
-        <form onSubmit={preventDefault}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <label id="form-label">Search a book</label>
           <input type="text" value={inputValue} onChange={handleInput} />
         </form>

@@ -1,30 +1,19 @@
 import Book from "./Book";
 import Loader from "react-loader-spinner";
-import { useEffect, useRef } from "react";
 
-const BooksList = ({ data, isPending, isEmpty }) => {
-  const ref = useRef();
-
-  // Wrapper leave transition
-  useEffect(() => {
-    if (!ref.current) return;
-    if (isEmpty) {
-      ref.current.classList.add("clear");
-    }
-  }, [isEmpty]);
-
+const BooksList = ({ data, isPending }) => {
   return (
     <>
       {!data && <h1 className="result-heading">Type a book above</h1>}
-      {data === null && isPending && (
+      {isPending && (
         <div className="loading">
-          <Loader type="TailSpin" color="#323232" height={90} width={90} />
+          <Loader type="TailSpin" color="#000000" height={85} width={85} />
         </div>
       )}
       {data && (
         <>
           <h1 className="result-heading">Results</h1>
-          <div className="wrapper" ref={ref}>
+          <div className="wrapper">
             {data.map((book) => (
               <Book book={book.volumeInfo} key={book.id} />
             ))}
