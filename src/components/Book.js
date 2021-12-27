@@ -1,21 +1,9 @@
-import { useEffect, useRef } from "react";
-
 const Book = ({ book }) => {
   const { imageLinks, title, authors, language, industryIdentifiers, publishedDate } = book;
   const NO_IMG = "https://dummyimage.com/200x300&text=No+Image";
-  const bookRef = useRef();
-
-  // Entry Book card transition
-  useEffect(() => {
-    setTimeout(() => {
-      if (!bookRef) return;
-
-      bookRef.current.classList.remove("fade");
-    }, 10);
-  });
 
   return (
-    <a className="book fade" rel="noreferrer" target="_blank" href={book.infoLink} ref={bookRef}>
+    <a className="book" rel="noreferrer" target="_blank" href={book.infoLink}>
       <div className="card">
         {/* Thumbnail */}
         {book.imageLinks && (

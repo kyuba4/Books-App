@@ -1,5 +1,6 @@
 import Book from "./Book";
 import Loader from "react-loader-spinner";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const BooksList = ({ data, isPending }) => {
   return (
@@ -13,11 +14,13 @@ const BooksList = ({ data, isPending }) => {
       {data && (
         <>
           <h1 className="result-heading">Results</h1>
-          <div className="wrapper">
+          <TransitionGroup className="wrapper">
             {data.map((book) => (
-              <Book book={book.volumeInfo} key={book.id} />
+              <CSSTransition key={book.id} timeout={600} classNames={"fade-"} appear={true}>
+                <Book book={book.volumeInfo} key={book.id} />
+              </CSSTransition>
             ))}
-          </div>
+          </TransitionGroup>
         </>
       )}
       {data === undefined && (

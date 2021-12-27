@@ -46,3 +46,36 @@
     }
   }
 }
+
+// Book Card Transition
+.fade--appear {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+.fade--appear-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 600ms transform 300ms;
+}
+
+.fade--enter {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+.fade--enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 600ms transform 300ms;
+}
+
+.fade--exit {
+  opacity: 0;
+  transition: all 0ms;
+}
+
+.fade--exit-active {
+  opacity: 0;
+  transition: all 0ms;
+}
